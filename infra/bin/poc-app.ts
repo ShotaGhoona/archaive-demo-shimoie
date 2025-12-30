@@ -68,13 +68,13 @@ const pocStack = new PocStack(
   config,
   {
     ...stackProps,
-    systemName: 'cdk-template-poc',
+    systemName: 'archaive-shimoie-poc',
     enableMonitoring: false, // 💡 PoC推奨: 初期段階では監視を無効化（必要になったらtrueに変更）
   }
 );
 
 // アプリケーション全体のタグ
-cdk.Tags.of(app).add('Project', 'cdk-template-poc');
+cdk.Tags.of(app).add('Project', 'archaive-shimoie-poc');
 cdk.Tags.of(app).add('Environment', config.envName);
 cdk.Tags.of(app).add('Architecture', 'AllInOne');
 cdk.Tags.of(app).add('Purpose', 'PoC');

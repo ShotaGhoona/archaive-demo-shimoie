@@ -99,7 +99,7 @@ export const testConfig: EnvironmentConfig = {
 
   tags: {
     Environment: 'test',
-    Project: 'cdk-template',
+    Project: 'archaive-shimoie',
     ManagedBy: 'CDK',
   },
 };

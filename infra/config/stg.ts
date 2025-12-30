@@ -105,7 +105,7 @@ export const stgConfig: EnvironmentConfig = {
 
   tags: {
     Environment: 'stg',
-    Project: 'cdk-template',
+    Project: 'archaive-shimoie',
     ManagedBy: 'CDK',
     CostCenter: 'staging',
   },
