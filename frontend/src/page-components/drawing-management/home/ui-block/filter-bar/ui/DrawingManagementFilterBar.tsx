@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 import { Button } from '@/shared/ui/shadcn/ui/button';
 import { Input } from '@/shared/ui/shadcn/ui/input';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/shared/ui/shadcn/ui/tooltip';
 
 export function DrawingManagementFilterBar() {
   const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
@@ -13,25 +14,48 @@ export function DrawingManagementFilterBar() {
   return (
     <section className='flex flex-wrap items-center gap-3 border-b bg-white px-6 py-3'>
       <div className='flex items-center gap-2'>
-        <Button
-          variant={viewMode === 'list' ? 'secondary' : 'outline'}
-          size='icon'
-          aria-label='リスト表示'
-          onClick={() => setViewMode('list')}
-        >
-          <List className='size-4' />
-        </Button>
-        <Button
-          variant={viewMode === 'grid' ? 'secondary' : 'outline'}
-          size='icon'
-          aria-label='グリッド表示'
-          onClick={() => setViewMode('grid')}
-        >
-          <LayoutGrid className='size-4' />
-        </Button>
+        <div className='flex h-12 items-center gap-1 rounded-lg border bg-background p-0.5'>
+          <Tooltip delayDuration={500}>
+            <TooltipTrigger asChild>
+              <Button
+                variant='ghost'
+                size='icon'
+                aria-label='リスト表示'
+                onClick={() => setViewMode('list')}
+                className={
+                  viewMode === 'list'
+                    ? 'h-10 w-10 bg-[#30B6C8] px-0 text-white hover:bg-[#2aa7b7] hover:text-white'
+                    : 'h-10 w-10 px-0 text-[#30B6C8] hover:bg-[#30B6C8]/10 hover:text-[#30B6C8]'
+                }
+              >
+                <List className='h-5 w-5' />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side='bottom'>リスト表示</TooltipContent>
+          </Tooltip>
+          <Tooltip delayDuration={500}>
+            <TooltipTrigger asChild>
+              <Button
+                variant='ghost'
+                size='icon'
+                aria-label='グリッド表示'
+                onClick={() => setViewMode('grid')}
+                className={
+                  viewMode === 'grid'
+                    ? 'h-10 w-10 bg-[#30B6C8] px-0 text-white hover:bg-[#2aa7b7] hover:text-white'
+                    : 'h-10 w-10 px-0 text-[#30B6C8] hover:bg-[#30B6C8]/10 hover:text-[#30B6C8]'
+                }
+              >
+                <LayoutGrid className='h-5 w-5' />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side='bottom'>グリッド表示</TooltipContent>
+          </Tooltip>
+        </div>
         <Button
           variant='outline'
-          className='gap-2'
+          size='lg'
+          className='h-12 gap-2 px-4'
           onClick={() => {
             // TODO: API呼び出し
             alert('詳細フィルターを開く（未実装）');
@@ -45,7 +69,7 @@ export function DrawingManagementFilterBar() {
         <div className='relative w-full max-w-xl'>
           <Search className='pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground' />
           <Input
-            className='pl-9'
+            className='h-12 pl-9'
             placeholder='キーワードで検索 (Enterで検索)'
             value={searchQuery}
             onChange={(event) => setSearchQuery(event.target.value)}
@@ -65,7 +89,8 @@ export function DrawingManagementFilterBar() {
         </div>
         <Button
           variant='outline'
-          className='gap-2'
+          size='lg'
+          className='h-12 gap-2 px-4'
           onClick={() => {
             // TODO: API呼び出し
             alert('CSV出力（未実装）');
