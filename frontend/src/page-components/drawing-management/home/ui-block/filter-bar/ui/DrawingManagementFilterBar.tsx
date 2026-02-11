@@ -1,6 +1,6 @@
 'use client';
 
-import { CheckCircle2, Download, LayoutGrid, List, Search, SlidersHorizontal } from 'lucide-react';
+import { CheckCircle2, Download, LayoutGrid, List, Search, SlidersHorizontal, FileImage } from 'lucide-react';
 import { useState } from 'react';
 
 import { Button } from '@/shared/ui/shadcn/ui/button';
@@ -83,10 +83,18 @@ export function DrawingManagementFilterBar() {
         </div>
       </div>
       <div className='ml-auto flex items-center gap-3 text-sm text-muted-foreground'>
-        <div className='flex items-center gap-2 text-emerald-600'>
-          <CheckCircle2 className='size-4' />
-          保存済み
-        </div>
+        <Button
+          variant='outline'
+          size='lg'
+          className='h-12 gap-2 px-4'
+          onClick={() => {
+            // TODO: API呼び出し
+            alert('テーブル設定（未実装）');
+          }}
+        >
+          <List className='size-4' />
+          テーブル設定
+        </Button>
         <Button
           variant='outline'
           size='lg'
@@ -98,6 +106,28 @@ export function DrawingManagementFilterBar() {
         >
           <Download className='size-4' />
           CSV出力
+        </Button>
+        <Button
+          variant='outline'
+          size='lg'
+          className='h-12 gap-2 px-4 bg-[#30B6C8] text-white hover:bg-[#2aa7b7] hover:text-white'
+          onClick={() => {
+            alert('類似図面検索（未実装）');
+          }}
+        >
+          <Search className='size-4' />
+          類似図面検索
+        </Button>
+        <Button
+          variant='outline'
+          size='lg'
+          className='h-12 gap-2 px-4 bg-[#30B6C8] text-white hover:bg-[#2aa7b7] hover:text-white'
+          onClick={() => {
+            alert('図面登録（未実装）');
+          }}
+        >
+          <FileImage className='size-4' />
+          図面登録
         </Button>
       </div>
     </section>
