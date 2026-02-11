@@ -55,7 +55,7 @@ export function DrawingManagementFilterBar() {
         <Button
           variant='outline'
           size='lg'
-          className='h-12 gap-2 px-4'
+          className='h-12 gap-2 border-[#30B6C8] px-4 text-[#30B6C8] hover:bg-[#30B6C8]/10 hover:text-[#30B6C8]'
           onClick={() => {
             // TODO: API呼び出し
             alert('詳細フィルターを開く（未実装）');

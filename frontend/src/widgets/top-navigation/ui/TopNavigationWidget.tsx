@@ -16,7 +16,7 @@ export function TopNavigationWidget() {
         {NAV_ITEMS.map((item) => (
           <button
             key={item}
-            className='rounded-full px-3 py-1 transition hover:bg-white/15'
+            className='rounded-full px-5 py-3 text-base font-semibold transition hover:bg-white/15'
             type='button'
             onClick={() => {
               // TODO: API呼び出し
