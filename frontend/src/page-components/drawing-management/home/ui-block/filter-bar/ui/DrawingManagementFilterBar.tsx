@@ -92,8 +92,20 @@ export function DrawingManagementFilterBar() {
             alert('テーブル設定（未実装）');
           }}
         >
-          <List className='size-4' />
+          <SlidersHorizontal className='size-4' />
           テーブル設定
+        </Button>
+        <Button
+          variant='outline'
+          size='lg'
+          className='h-12 gap-2 px-4'
+          onClick={() => {
+            // TODO: API呼び出し
+            alert('一括操作（未実装）');
+          }}
+        >
+          <List className='size-4' />
+          一括操作
         </Button>
         <Button
           variant='outline'
