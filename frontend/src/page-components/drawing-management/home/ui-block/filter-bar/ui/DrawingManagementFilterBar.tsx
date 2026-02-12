@@ -6,10 +6,12 @@ import { useState } from 'react';
 import { Button } from '@/shared/ui/shadcn/ui/button';
 import { Input } from '@/shared/ui/shadcn/ui/input';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/shared/ui/shadcn/ui/tooltip';
+import { DrawingManagementTableSettingsModal } from './DrawingManagementTableSettingsModal';
 
 export function DrawingManagementFilterBar() {
   const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
   const [searchQuery, setSearchQuery] = useState('');
+  const [isTableSettingsOpen, setIsTableSettingsOpen] = useState(false);
 
   return (
     <section className='flex flex-wrap items-center gap-3 border-b bg-white px-6 py-3'>
@@ -88,8 +90,7 @@ export function DrawingManagementFilterBar() {
           size='lg'
           className='h-12 gap-2 px-4'
           onClick={() => {
-            // TODO: API呼び出し
-            alert('テーブル設定（未実装）');
+            setIsTableSettingsOpen(true);
           }}
         >
           <SlidersHorizontal className='size-4' />
@@ -142,6 +143,10 @@ export function DrawingManagementFilterBar() {
           図面登録
         </Button>
       </div>
+      <DrawingManagementTableSettingsModal
+        open={isTableSettingsOpen}
+        onOpenChange={setIsTableSettingsOpen}
+      />
     </section>
   );
 }
