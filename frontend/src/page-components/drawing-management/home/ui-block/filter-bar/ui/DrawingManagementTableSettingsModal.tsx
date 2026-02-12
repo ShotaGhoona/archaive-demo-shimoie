@@ -13,7 +13,9 @@ import { Checkbox } from '@/shared/ui/shadcn/ui/checkbox';
 import {
   Dialog,
   DialogContent,
+  DialogTitle,
 } from '@/shared/ui/shadcn/ui/dialog';
+import { VisuallyHidden } from '@/shared/ui/shadcn/ui/visually-hidden';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui/shadcn/ui/tabs';
 
 const DISPLAY_COLUMNS = [
@@ -44,6 +46,9 @@ export function DrawingManagementTableSettingsModal({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className='max-w-5xl p-0 sm:max-w-5xl'>
+        <VisuallyHidden>
+          <DialogTitle>テーブル設定</DialogTitle>
+        </VisuallyHidden>
         <div className='flex h-[80vh] min-h-[560px] flex-col overflow-hidden'>
           <Tabs defaultValue='display' className='flex min-h-0 flex-1 flex-col'>
             <div className='px-6 pt-6'>
