@@ -65,7 +65,7 @@ export function DrawingManagementTableSettingsModal({
                   className='rounded-none border-0 border-b-2 border-transparent px-0 pb-4 text-base font-semibold text-muted-foreground shadow-none hover:bg-transparent focus:outline-none focus-visible:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:border-[#30B6C8] data-[state=active]:bg-transparent data-[state=active]:text-foreground data-[state=active]:shadow-none'
                 >
                   <Settings2 className='size-4' />
-                  テーブル設定
+                  テーブル項目設定
                 </TabsTrigger>
                 <TabsTrigger
                   value='filter'

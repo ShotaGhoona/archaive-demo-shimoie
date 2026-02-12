@@ -1,6 +1,6 @@
 'use client';
 
-import { CheckCircle2, Download, LayoutGrid, List, Search, SlidersHorizontal, FileImage } from 'lucide-react';
+import { CheckCircle2, Download, LayoutGrid, List, Search, SlidersHorizontal, FileImage, Settings2 } from 'lucide-react';
 import { useState } from 'react';
 
 import { Button } from '@/shared/ui/shadcn/ui/button';
@@ -93,7 +93,7 @@ export function DrawingManagementFilterBar() {
             setIsTableSettingsOpen(true);
           }}
         >
-          <SlidersHorizontal className='size-4' />
+          <Settings2 className='size-4' />
           テーブル設定
         </Button>
         <Button
