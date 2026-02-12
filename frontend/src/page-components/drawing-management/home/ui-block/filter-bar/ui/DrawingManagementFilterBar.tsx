@@ -22,7 +22,7 @@ export function DrawingManagementFilterBar() {
               <Button
                 variant='ghost'
                 size='icon'
-                aria-label='リスト表示'
+                aria-label='テーブルビュー'
                 onClick={() => setViewMode('list')}
                 className={
                   viewMode === 'list'
@@ -33,14 +33,14 @@ export function DrawingManagementFilterBar() {
                 <List className='h-5 w-5' />
               </Button>
             </TooltipTrigger>
-            <TooltipContent side='bottom'>リスト表示</TooltipContent>
+            <TooltipContent side='bottom'>テーブルビュー</TooltipContent>
           </Tooltip>
           <Tooltip delayDuration={500}>
             <TooltipTrigger asChild>
               <Button
                 variant='ghost'
                 size='icon'
-                aria-label='グリッド表示'
+                aria-label='ギャラリービュー'
                 onClick={() => setViewMode('grid')}
                 className={
                   viewMode === 'grid'
@@ -51,7 +51,7 @@ export function DrawingManagementFilterBar() {
                 <LayoutGrid className='h-5 w-5' />
               </Button>
             </TooltipTrigger>
-            <TooltipContent side='bottom'>グリッド表示</TooltipContent>
+            <TooltipContent side='bottom'>ギャラリービュー</TooltipContent>
           </Tooltip>
         </div>
         <Button
