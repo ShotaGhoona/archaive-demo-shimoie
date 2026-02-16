@@ -1,6 +1,7 @@
 export interface DrawingRow {
   id: number;
   fileName: string;
+  previewImageUrl?: string;
   drawingNumber: string;
   externalDrawingNumber: string;
   authorName: string;

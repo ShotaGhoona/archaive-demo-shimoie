@@ -1,15 +1,34 @@
 'use client';
 
-import { CheckCircle2, Download, LayoutGrid, List, Search, SlidersHorizontal, FileImage, Settings2 } from 'lucide-react';
+import {
+  Download,
+  LayoutGrid,
+  List,
+  Search,
+  SlidersHorizontal,
+  FileImage,
+  Settings2,
+} from 'lucide-react';
 import { useState } from 'react';
 
 import { Button } from '@/shared/ui/shadcn/ui/button';
 import { Input } from '@/shared/ui/shadcn/ui/input';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/shared/ui/shadcn/ui/tooltip';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from '@/shared/ui/shadcn/ui/tooltip';
 import { DrawingManagementTableSettingsModal } from './DrawingManagementTableSettingsModal';
 
-export function DrawingManagementFilterBar() {
-  const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
+type Props = {
+  viewMode: 'list' | 'grid';
+  onViewModeChange: (mode: 'list' | 'grid') => void;
+};
+
+export function DrawingManagementFilterBar({
+  viewMode,
+  onViewModeChange,
+}: Props) {
   const [searchQuery, setSearchQuery] = useState('');
   const [isTableSettingsOpen, setIsTableSettingsOpen] = useState(false);
 
@@ -23,7 +42,7 @@ export function DrawingManagementFilterBar() {
                 variant='ghost'
                 size='icon'
                 aria-label='テーブルビュー'
-                onClick={() => setViewMode('list')}
+                onClick={() => onViewModeChange('list')}
                 className={
                   viewMode === 'list'
                     ? 'h-10 w-10 bg-[#30B6C8] px-0 text-white hover:bg-[#2aa7b7] hover:text-white'
@@ -41,7 +60,7 @@ export function DrawingManagementFilterBar() {
                 variant='ghost'
                 size='icon'
                 aria-label='ギャラリービュー'
-                onClick={() => setViewMode('grid')}
+                onClick={() => onViewModeChange('grid')}
                 className={
                   viewMode === 'grid'
                     ? 'h-10 w-10 bg-[#30B6C8] px-0 text-white hover:bg-[#2aa7b7] hover:text-white'
@@ -123,7 +142,7 @@ export function DrawingManagementFilterBar() {
         <Button
           variant='outline'
           size='lg'
-          className='h-12 gap-2 px-4 bg-[#30B6C8] text-white hover:bg-[#2aa7b7] hover:text-white'
+          className='h-12 gap-2 bg-[#30B6C8] px-4 text-white hover:bg-[#2aa7b7] hover:text-white'
           onClick={() => {
             alert('類似図面検索（未実装）');
           }}
@@ -134,7 +153,7 @@ export function DrawingManagementFilterBar() {
         <Button
           variant='outline'
           size='lg'
-          className='h-12 gap-2 px-4 bg-[#30B6C8] text-white hover:bg-[#2aa7b7] hover:text-white'
+          className='h-12 gap-2 bg-[#30B6C8] px-4 text-white hover:bg-[#2aa7b7] hover:text-white'
           onClick={() => {
             alert('図面登録（未実装）');
           }}

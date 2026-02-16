@@ -16,23 +16,13 @@ import {
   DialogTitle,
 } from '@/shared/ui/shadcn/ui/dialog';
 import { VisuallyHidden } from '@/shared/ui/shadcn/ui/visually-hidden';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui/shadcn/ui/tabs';
-
-const DISPLAY_COLUMNS = [
-  { id: 'file-name', label: 'ファイル名' },
-  { id: 'product-name', label: '製品名' },
-  { id: 'external-no', label: '外部図面番号' },
-  { id: 'note', label: '備考' },
-  { id: 'drawing-no', label: '図面番号' },
-  { id: 'created-at', label: '作成日' },
-  { id: 'updated-at', label: '更新日時' },
-  { id: 'author', label: '作成者名' },
-  { id: 'updated-by', label: '更新者' },
-  { id: 'category', label: 'カテゴリ' },
-  { id: 'status', label: 'ステータス' },
-  { id: 'tag', label: 'タグ' },
-  { id: 'memo', label: 'メモ' },
-];
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@/shared/ui/shadcn/ui/tabs';
+import { DRAWING_MANAGEMENT_TABLE_COLUMNS } from '../../table-view/config/column-config';
 
 type DrawingManagementTableSettingsModalProps = {
   open: boolean;
@@ -55,21 +45,21 @@ export function DrawingManagementTableSettingsModal({
               <TabsList className='h-auto w-full justify-start gap-8 rounded-none border-b border-muted bg-transparent p-0 text-sm'>
                 <TabsTrigger
                   value='display'
-                  className='rounded-none border-0 border-b-2 border-transparent px-0 pb-4 text-base font-semibold text-muted-foreground shadow-none hover:bg-transparent focus:outline-none focus-visible:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:border-[#30B6C8] data-[state=active]:bg-transparent data-[state=active]:text-foreground data-[state=active]:shadow-none'
+                  className='rounded-none border-0 border-b-2 border-transparent px-0 pb-4 text-base font-semibold text-muted-foreground shadow-none hover:bg-transparent focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:border-[#30B6C8] data-[state=active]:bg-transparent data-[state=active]:text-foreground data-[state=active]:shadow-none'
                 >
                   <LayoutList className='size-4' />
                   テーブル表示設定
                 </TabsTrigger>
                 <TabsTrigger
                   value='table'
-                  className='rounded-none border-0 border-b-2 border-transparent px-0 pb-4 text-base font-semibold text-muted-foreground shadow-none hover:bg-transparent focus:outline-none focus-visible:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:border-[#30B6C8] data-[state=active]:bg-transparent data-[state=active]:text-foreground data-[state=active]:shadow-none'
+                  className='rounded-none border-0 border-b-2 border-transparent px-0 pb-4 text-base font-semibold text-muted-foreground shadow-none hover:bg-transparent focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:border-[#30B6C8] data-[state=active]:bg-transparent data-[state=active]:text-foreground data-[state=active]:shadow-none'
                 >
                   <Settings2 className='size-4' />
                   テーブル項目設定
                 </TabsTrigger>
                 <TabsTrigger
                   value='filter'
-                  className='rounded-none border-0 border-b-2 border-transparent px-0 pb-4 text-base font-semibold text-muted-foreground shadow-none hover:bg-transparent focus:outline-none focus-visible:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:border-[#30B6C8] data-[state=active]:bg-transparent data-[state=active]:text-foreground data-[state=active]:shadow-none'
+                  className='rounded-none border-0 border-b-2 border-transparent px-0 pb-4 text-base font-semibold text-muted-foreground shadow-none hover:bg-transparent focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:border-[#30B6C8] data-[state=active]:bg-transparent data-[state=active]:text-foreground data-[state=active]:shadow-none'
                 >
                   <ListFilter className='size-4' />
                   フィルター表示設定
@@ -77,21 +67,31 @@ export function DrawingManagementTableSettingsModal({
               </TabsList>
             </div>
 
-            <TabsContent value='display' className='flex min-h-0 flex-1 flex-col px-6 pb-6'>
+            <TabsContent
+              value='display'
+              className='flex min-h-0 flex-1 flex-col px-6 pb-6'
+            >
               <div className='flex items-center justify-between pt-4 text-sm text-muted-foreground'>
-                <p>ドラッグで順序を変更、チェックで表示/非表示を切り替えできます</p>
-                <span>{DISPLAY_COLUMNS.length} / {DISPLAY_COLUMNS.length} 列を表示</span>
+                <p>
+                  ドラッグで順序を変更、チェックで表示/非表示を切り替えできます
+                </p>
+                <span>
+                  {DRAWING_MANAGEMENT_TABLE_COLUMNS.length} /{' '}
+                  {DRAWING_MANAGEMENT_TABLE_COLUMNS.length} 列を表示
+                </span>
               </div>
               <div className='mt-4 rounded-lg border'>
                 <div className='max-h-[420px] overflow-y-auto overflow-x-hidden'>
-                  {DISPLAY_COLUMNS.map((column) => (
+                  {DRAWING_MANAGEMENT_TABLE_COLUMNS.map((column) => (
                     <div
                       key={column.id}
                       className='flex items-center gap-3 border-b px-4 py-3 last:border-b-0'
                     >
                       <GripVertical className='size-4 text-muted-foreground' />
                       <Eye className='size-4 text-muted-foreground' />
-                      <span className='text-sm font-medium text-foreground'>{column.label}</span>
+                      <span className='text-sm font-medium text-foreground'>
+                        {column.label}
+                      </span>
                       <Checkbox className='ml-auto' defaultChecked />
                     </div>
                   ))}

@@ -20,6 +20,7 @@ import {
 } from '@/shared/ui/shadcn/ui/table';
 
 import { dummyDrawingRows } from '../../../dummy-data/samples';
+import { DRAWING_MANAGEMENT_TABLE_COLUMNS } from '../config/column-config';
 
 export function DrawingManagementTable() {
   return (
@@ -28,21 +29,11 @@ export function DrawingManagementTable() {
         <Table className='min-w-[1200px]'>
           <TableHeader className='sticky top-0 z-10 bg-slate-100'>
             <TableRow>
-              <TableHead className='w-[90px]'>詳細</TableHead>
-              <TableHead>ファイル名</TableHead>
-              <TableHead>図面番号</TableHead>
-              <TableHead>外部図面番号</TableHead>
-              <TableHead>作者名</TableHead>
-              <TableHead>更新者名</TableHead>
-              <TableHead>取引先名</TableHead>
-              <TableHead>図面カテゴリ</TableHead>
-              <TableHead className='w-[90px]'>ページ番号</TableHead>
-              <TableHead className='w-[120px]'>類似検索表示</TableHead>
-              <TableHead>備考</TableHead>
-              <TableHead>作成日</TableHead>
-              <TableHead>更新日時</TableHead>
-              <TableHead className='w-[90px]'>リビ</TableHead>
-              <TableHead className='w-[90px]'>削除</TableHead>
+              {DRAWING_MANAGEMENT_TABLE_COLUMNS.map((column) => (
+                <TableHead key={column.id} className={column.headerClassName}>
+                  {column.label}
+                </TableHead>
+              ))}
             </TableRow>
           </TableHeader>
           <TableBody>
